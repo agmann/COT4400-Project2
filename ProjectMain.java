@@ -15,7 +15,7 @@ import java.util.Arrays;
         int[] e = {5,2,3,4,10,5,3};
         int[] f = {8,2,3,4,5,9,1,10,3,4,2,8};
 
-        int test = FindOptimalScore(e,10);
+        int test = FindOptimalScore(b,10);
 
         System.out.println("Test out: " + test);
 
@@ -35,10 +35,7 @@ import java.util.Arrays;
          //Known that a.length is at least 2, so attempt to consolidate
          for (int i = 2; i <= a.length; i++) {
              if (t >= getSubsetSum(a,i)) {
-                 //System.out.println("" + i + " items can be combined");
-                 int sum = getSubsetSum(a,i);
-                 //System.out.println("sum is " + sum);
-                 int ineq = (t - sum)*(t - sum);
+                 int ineq = getScore(a,t,i);
                  //System.out.println("ineq is " + ineq);
                  if (i <= a.length-1) {
                      //System.out.println("recurse...");
