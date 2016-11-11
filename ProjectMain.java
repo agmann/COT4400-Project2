@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 
      }
-     /* FIXME: uggghhh
+     /* FIXME: clean up self checking code
       *
       */
      public static int populate(int[] a, int t) {
