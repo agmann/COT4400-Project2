@@ -12,8 +12,10 @@ import java.util.Arrays;
         int[] b = {6,5,4};
         int[] c = {7};
         int[] d = {7,3};
+        int[] e = {5,2,3,4,10,5,3};
+        int[] f = {8,2,3,4,5,9,1,10,3,4,2,8};
 
-        int test = populate(b,10);
+        int test = FindOptimalScore(e,10);
 
         System.out.println("Test out: " + test);
 
@@ -22,30 +24,29 @@ import java.util.Arrays;
      /* FIXME: clean up self checking code
       *
       */
-     public static int populate(int[] a, int t) {
+     public static int FindOptimalScore(int[] a, int t) {
          if (a.length == 1) {
              //System.out.println("length is 1");
              int ineq = (t - a[0])*(t - a[0]);
              //System.out.println("returned " + ineq);
              return ineq;
          }
-         int ineq = (t - a[0])*(t - a[0]) + populate(Arrays.copyOfRange(a,1,a.length),t);
-         int min = ineq;
+         int min = (t - a[0])*(t - a[0]) + FindOptimalScore(Arrays.copyOfRange(a,1,a.length),t);
          //Known that a.length is at least 2, so attempt to consolidate
          for (int i = 2; i <= a.length; i++) {
              if (t >= getSubsetSum(a,i)) {
-                 //System.out.println("Up to " + i + " items can be combined");
+                 //System.out.println("" + i + " items can be combined");
                  int sum = getSubsetSum(a,i);
                  //System.out.println("sum is " + sum);
-                 int ineqb = (t - sum)*(t - sum);
-                 //System.out.println("ineq is " + ineqb);
+                 int ineq = (t - sum)*(t - sum);
+                 //System.out.println("ineq is " + ineq);
                  if (i <= a.length-1) {
                      //System.out.println("recurse...");
-                     ineqb += populate(Arrays.copyOfRange(a,i,a.length),t);
+                     ineq += FindOptimalScore(Arrays.copyOfRange(a,i,a.length),t);
                  }
-                 if (ineqb < min) {
-                     //System.out.println("ineq (" + ineqb + ") is less than min (" + min + ")");
-                     min = ineqb;
+                 if (ineq < min) {
+                     //System.out.println("ineq (" + ineq + ") is less than min (" + min + ")");
+                     min = ineq;
                  }
              }
          }
