@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class RecurseMem {
 
-    /* FIXME: clean up self checking code
+    /* FIXME: modify this algorithm to be memoized
       *
       */
      public static int FindOptimalScore(int[] a, int t) {
