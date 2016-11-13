@@ -43,14 +43,12 @@ import java.util.Scanner;
                  arr[i] = Integer.parseInt(arrayString[i]);
              }
 
-             int test1 = IterApproach.FindOptimalScore(e, 10);
+             int test1 = IterApproach.FindOptimalScore(arr, t);
+             //int test2 = RecurseApproach.FindOptimalScore(arr, t);
+             //int test3 = RecurseMem.FindOptimalScore(arr, t);
 
-             int test2 = RecurseApproach.FindOptimalScore(e, 10);
-
-             int test3 = RecurseMem.FindOptimalScore(e, 10);
-
-             System.out.println("Recursive, Memoized test out: " + test3 + " problem " + problems);
-             System.out.println("Recursive test out: " + test2 + " problem " + problems);
+             //System.out.println("Recursive, Memoized test out: " + test3 + " problem " + problems);
+             //System.out.println("Recursive test out: " + test2 + " problem " + problems);
              System.out.println("Iterative test out: " + test1 + " problem " + problems);
 
          }
