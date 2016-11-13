@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class IterApproach implements Helpers {
 
-    public int FindOptimalScore(int[] a, int t) {
+    public static int FindOptimalScore(int[] a, int t) {
 
         int[][] ineqScores = new int[a.length][a.length];
         int min = Integer.MAX_VALUE;

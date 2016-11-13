@@ -19,8 +19,8 @@ import java.util.Arrays;
      
         int test2 = FindOptimalScore(b,10);
 
-        System.out.println("Recursive test out: " + test1);
-        System.out.println("Iterative test out: " + test2);
+        System.out.println("Recursive test out: " + test2);
+        System.out.println("Iterative test out: " + test1);
 
 
      }
