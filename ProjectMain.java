@@ -7,7 +7,6 @@ import java.util.Arrays;
  public class ProjectMain {
 
      public static void main(String args[]) {
-        System.out.println("Hello World!");
 
         int[] b = {6,5,4};
         int[] c = {7};
@@ -15,7 +14,7 @@ import java.util.Arrays;
         int[] e = {5,2,3,4,10,5,3};
         int[] f = {8,2,3,4,5,9,1,10,3,4,2,8};
 
-        int test = FindOptimalScore(b,10);
+        int test = FindOptimalScore(e,10);
 
         System.out.println("Test out: " + test);
 
