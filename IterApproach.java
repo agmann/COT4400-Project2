@@ -6,53 +6,44 @@ import java.util.Arrays;
  */
 
 public class IterApproach implements Helpers {
-    /* FIXME: clean up self checking code
-      *
-      */
 
     public int FindOptimalScore(int[] a, int t) {
 
-        int[][] storeScores = new int[a.length][a.length];
+        int[][] ineqScores = new int[a.length][a.length];
+        int min = Integer.MAX_VALUE;
+        int tempSum;
+        int tempIneqScoreSum = 0;
 
+        //init 2D array
         for (int i = 0; i < a.length; i++){
             for( int j = 0; j < a.length; j++){
-                storeScores[i][j] = Integer.MAX_VALUE;
+                ineqScores[i][j] = Integer.MAX_VALUE;
             }
         }
 
-        int min;
-        int temp;
-
         if (a.length == 1) {
 
-            storeScores[0][0] = (t - a[0])*(t - a[0]);
-            return storeScores[0][0];
+            ineqScores[0][0] = (t - a[0])*(t - a[0]);
+            return ineqScores[0][0];
         }
 
         for(int i = 0; i < a.length; i++){
 
-            min = Integer.MAX_VALUE;
-            temp = 0;
+            tempSum = 0;
 
             for (int j = i; j < a.length; j++) {
-                temp += a[j];
-                if (temp <= t) {
+                tempSum += a[j];
+                if (tempSum <= t) {
 
-                    storeScores[i][j] = (t - temp) * (t - temp);
-//                    we are going to need to find the optimal solution. this will only fill in the table I think.
-//                    if (ineq < min) {
-//                        //System.out.println("ineq (" + ineq + ") is less than min (" + min + ")");
-//                        min = ineq;
-//                    }
+                    ineqScores[i][j] = (t - tempSum) * (t - tempSum);
                 }
                 else {
-                    temp = 0;
+                    tempSum = 0;
                     break;
                 }
             }
         }
 
-        //System.out.println("returning " + min);
         return 0;
     }
 }
