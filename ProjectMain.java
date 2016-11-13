@@ -1,10 +1,14 @@
 /* This is the java source file used for our project 2 submission. 
  *
  */
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections.*;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
- public class ProjectMain implements Helpers {
+public class ProjectMain implements Helpers {
 
      public static void main(String args[]) {
         System.out.println("Hello World!");
@@ -15,14 +19,32 @@ import java.util.Arrays;
         int[] e = {5,2,3,4,10,5,3};
         int[] f = {8,2,3,4,5,9,1,10,3,4,2,8};
 
-         IterApproach iterApproach = new IterApproach();
-         iterApproach.FindOptimalScore(e,10);
+         Scanner scan = null;
+
+         try {
+             File file = new File("input.txt");
+             scan = new Scanner(file);
+         }catch (Exception ex){
+             System.out.println("file not found");
+         }
+
+        int numOfProblems = Integer.parseInt(scan.nextLine().trim());
+        int arrLength = scan.nextInt();
+        int t = Integer.parseInt(scan.nextLine().trim());
+         String[] arrayString = scan.nextLine().trim().split(" ");
+         int[] arr = new int[arrLength];
+         for (int i = 0; i < arr.length; i++) {
+             arr[i] = Integer.parseInt(arrayString[i]);
+         }
+
+
+        IterApproach iterApproach = new IterApproach();
+        iterApproach.FindOptimalScore(arr,10);
 
         int test = FindOptimalScore(b,10);
 
+        scan.close();
         System.out.println("Test out: " + test);
-
-
      }
      /* FIXME: clean up self checking code
       *
