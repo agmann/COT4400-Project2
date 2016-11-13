@@ -7,7 +7,7 @@ import java.util.Collections.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
- public class ProjectMain implements Helpers {
+ public class ProjectMain {
 
      public static void main(String args[]) {
 

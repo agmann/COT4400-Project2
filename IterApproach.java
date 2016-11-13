@@ -5,7 +5,7 @@ import java.util.Arrays;
  * Created by jonat on 11/12/2016.
  */
 
-public class IterApproach implements Helpers {
+public class IterApproach {
 
     public static int FindOptimalScore(int[] a, int t) {
 

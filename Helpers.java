@@ -1,7 +1,7 @@
 /**
  * Created by jonat on 11/12/2016.
  */
-public interface Helpers {
+public class Helpers {
     static int getScore(int[] a, int t, int sizeSubset) {
         int sum = getSubsetSum(a, sizeSubset);
         return (t - sum)*(t - sum);
