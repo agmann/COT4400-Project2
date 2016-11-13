@@ -13,15 +13,16 @@ import java.util.Arrays;
         int[] d = {7,3};
         int[] e = {5,2,3,4,10,5,3};
         int[] f = {8,2,3,4,5,9,1,10,3,4,2,8};
-    {
-        int test = FindOptimalScore(e,10);
+    
+        int test1 = FindOptimalScore(e,10);
          IterApproach iterApproach = new IterApproach();
          iterApproach.FindOptimalScore(e,10);
-     }
-        int test = FindOptimalScore(b,10);
+     
+        int test2 = FindOptimalScore(b,10);
      
 
-        System.out.println("Test out: " + test);
+        System.out.println("Recursive test out: " + test1);
+        System.out.println("Iterative test out: " + test2);
 
 
      }
