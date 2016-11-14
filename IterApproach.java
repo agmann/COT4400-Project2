@@ -15,6 +15,9 @@ public class IterApproach {
         int tempIneqScoreSum = 0;
         int[] holdMin = new int[a.length + 1];
 
+        //keeps stats about partitions made;
+        ArrayList<int> partSizes = new ArrayList<int>();
+
 
         //init 2D array
         for (int i = 0; i < a.length; i++){
@@ -33,10 +36,11 @@ public class IterApproach {
         for(int i = 0; i < a.length; i++){
 
             tempSum = 0;
-
+            int numInPart = 0;
             for (int j = i; j < a.length; j++) {
                 //use this to compute the sum of the partition
                 tempSum += a[j];
+                numInPart++;
 
                 if (tempSum <= t) {
                     //store the ineq score plus the previous partition's scores

@@ -51,5 +51,8 @@ import java.util.Scanner;
 
          }
          scan.close();
+         inputFile.close();
+         outputFile.createNewFile();
+         FileWriter fw = new FileWriter();
      }
  }
