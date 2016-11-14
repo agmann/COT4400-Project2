@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -15,15 +16,8 @@ public class IterApproach {
         int[] holdMin = new int[a.length + 1];
 
         //keeps stats about partitions made;
-        ArrayList<int> partSizes = new ArrayList<int>();
+        ArrayList<Integer> partSizes = new ArrayList<>();
 
-
-        //init 2D array
-        for (int i = 0; i < a.length; i++){
-            for( int j = 0; j < a.length; j++){
-                ineqScores[i][j] = Integer.MAX_VALUE;
-            }
-        }
 
         //init array that will hold the min column value of the inequScores
         for(int i = 0; i < holdMin.length; i++){
