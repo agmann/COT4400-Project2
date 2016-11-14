@@ -13,6 +13,8 @@ public class IterApproach {
         int min = Integer.MAX_VALUE;
         int tempSum;
         int tempIneqScoreSum = 0;
+        int[] holdMin = new int[a.length + 1];
+        int tempMin = 0;
 
         //init 2D array
         for (int i = 0; i < a.length; i++){
@@ -21,11 +23,10 @@ public class IterApproach {
             }
         }
 
-        if (a.length == 1) {
-
-            ineqScores[0][0] = (t - a[0])*(t - a[0]);
-            return ineqScores[0][0];
+        for(int i = 0; i < holdMin.length; i++){
+            holdMin[i] = Integer.MAX_VALUE;
         }
+        holdMin[0] = 0;
 
         for(int i = 0; i < a.length; i++){
 
@@ -33,17 +34,22 @@ public class IterApproach {
 
             for (int j = i; j < a.length; j++) {
                 tempSum += a[j];
+
+
                 if (tempSum <= t) {
 
-                    ineqScores[i][j] = (t - tempSum) * (t - tempSum);
-                }
-                else {
+                    ineqScores[i][j] = (t - tempSum) * (t - tempSum) + holdMin[i];
+                    holdMin[j+1] = ineqScores[i][j] < holdMin[j+1]? ineqScores[i][j]: holdMin[j+1];
+
+                } else {
                     tempSum = 0;
                     break;
                 }
+
             }
+            min = tempIneqScoreSum < min? tempIneqScoreSum: min;
         }
 
-        return 0;
+        return holdMin[a.length];
     }
 }
