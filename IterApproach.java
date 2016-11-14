@@ -10,18 +10,9 @@ public class IterApproach {
     public static int FindOptimalScore(int[] a, int t) {
 
         //init varibles
-        int[][] ineqScores = new int[a.length][a.length];
         int tempSum;
-        int tempIneqScoreSum = 0;
+        int tempIneqScore = 0;
         int[] holdMin = new int[a.length + 1];
-
-
-        //init 2D array
-        for (int i = 0; i < a.length; i++){
-            for( int j = 0; j < a.length; j++){
-                ineqScores[i][j] = Integer.MAX_VALUE;
-            }
-        }
 
         //init array that will hold the min column value of the inequScores
         for(int i = 0; i < holdMin.length; i++){
@@ -40,10 +31,10 @@ public class IterApproach {
 
                 if (tempSum <= t) {
                     //store the ineq score plus the previous partition's scores
-                    ineqScores[i][j] = (t - tempSum) * (t - tempSum) + holdMin[i];
+                    tempIneqScore = (t - tempSum) * (t - tempSum) + holdMin[i];
 
                     //update the min array according
-                    holdMin[j+1] = ineqScores[i][j] < holdMin[j+1]? ineqScores[i][j]: holdMin[j+1];
+                    holdMin[j+1] = tempIneqScore < holdMin[j+1]? tempIneqScore: holdMin[j+1];
 
                 } else {
                     tempSum = 0;
