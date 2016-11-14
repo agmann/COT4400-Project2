@@ -31,7 +31,7 @@ import java.util.Scanner;
 
          int numOfProblems = Integer.parseInt(scan.nextLine().trim());
 
-         for (int problems = 0; problems < numOfProblems; problems++) {
+         for (int problems = 0; problems < numOfProblems-3; problems++) {
 
              int arrLength = scan.nextInt();
              int t = Integer.parseInt(scan.nextLine().trim());
@@ -43,16 +43,19 @@ import java.util.Scanner;
                  arr[i] = Integer.parseInt(arrayString[i]);
              }
 
-             int test1 = IterApproach.FindOptimalScore(arr, t);
+             PartInfo test1 = (IterApproach.FindOptimalScore(arr, t));
              //int test2 = RecurseApproach.FindOptimalScore(arr, t);
              
              //System.out.println("Recursive test out: " + test2 + " problem " + problems);
-             System.out.println("Iterative test out: " + test1 + " problem " + problems);
+             System.out.println("Iterative test out: " + test1.ineq + " problem " + problems);
+             System.out.print(test1.psizes.size()+" ");
+             for (int x : test1.psizes) {
+                 System.out.print(x + " ");
+             }
+             System.out.println();
 
          }
          scan.close();
-         inputFile.close();
-         outputFile.createNewFile();
-         FileWriter fw = new FileWriter();
+         
      }
  }
