@@ -25,6 +25,9 @@ public class IterApproach {
             }
         }*/
 
+        ArrayList<Integer> partSizes = new ArrayList<>();
+
+
         //init array that will hold the min column value of the inequScores
         for(int i = 0; i < holdMin.length; i++){
             holdMin[i] = Integer.MAX_VALUE;
