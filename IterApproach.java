@@ -38,9 +38,6 @@ public class IterApproach {
                     numInPart++;
                     //store the ineq score plus the previous partition's scores
                     tempIneqScore = (t - tempSum) * (t - tempSum) + holdMin[i];
-
-                    //update the min array according
-//                    holdMin[j+1] = tempIneqScore < holdMin[j+1]? tempIneqScore: holdMin[j+1];
                     
                     if (tempIneqScore < holdMin[j+1]) {
                         holdMin[j+1] = tempIneqScore;
