@@ -17,16 +17,6 @@ public class IterApproach {
         //keeps stats about partitions made;
         ArrayList<Integer> partSizes = new ArrayList<Integer>();
 
-
-        //init 2D array
-        /*for (int i = 0; i < a.length; i++){
-            for( int j = 0; j < a.length; j++){
-                ineqScores[i][j] = Integer.MAX_VALUE;
-            }
-        }*/
-
-
-
         //init array that will hold the min column value of the inequScores
         for(int i = 0; i < holdMin.length; i++){
             holdMin[i] = Integer.MAX_VALUE;
@@ -42,33 +32,46 @@ public class IterApproach {
             for (int j = i; j < a.length; j++) {
                 //use this to compute the sum of the partition
                 tempSum += a[j];
-                numInPart++;
+
 
                 if (tempSum <= t) {
+                    numInPart++;
                     //store the ineq score plus the previous partition's scores
                     tempIneqScore = (t - tempSum) * (t - tempSum) + holdMin[i];
 
                     //update the min array according
-                    //holdMin[j+1] = tempIneqScore < holdMin[j+1]? tempIneqScore: holdMin[j+1];
+//                    holdMin[j+1] = tempIneqScore < holdMin[j+1]? tempIneqScore: holdMin[j+1];
                     
                     if (tempIneqScore < holdMin[j+1]) {
                         holdMin[j+1] = tempIneqScore;
+                        try {
+                            partSizes.set(j, j - i + 1);
+                        }catch (Exception ex){
+                            partSizes.add(j-i+1);
+                        }
                     }
-                    
 
                 } else {
                     numInPart--;
                     tempSum = 0;
                     break;
                 }
-                partSizes.add(numInPart);
-                
-
             }
- 
         }
 
-    
-        return (new PartInfo(holdMin[a.length], partSizes));
+        int minIndex = a.length -1;
+
+        ArrayList<Integer> solutionArray = new ArrayList<>();
+
+        while(minIndex >= 0){
+
+            solutionArray.add(partSizes.get(minIndex));
+
+            minIndex -= partSizes.get(minIndex) ;
+
+        }
+        Collections.reverse(solutionArray);
+
+        return (new PartInfo(holdMin[a.length], solutionArray));
     }
 }
