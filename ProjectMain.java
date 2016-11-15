@@ -2,6 +2,7 @@
  *
  */
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections.*;
 import java.util.Arrays;
@@ -20,10 +21,13 @@ import java.util.Scanner;
          Scanner scan = null;
          File inputFile = null;
          File outputFile = null;
+         FileWriter writer = null;
 
          try {
              inputFile = new File("input.txt");
              outputFile = new File("output.txt");
+             outputFile.createNewFile();
+             writer = new FileWriter(outputFile);
              scan = new Scanner(inputFile);
          } catch (Exception ex) {
              System.out.println("Error with the input/output files.");
@@ -31,7 +35,7 @@ import java.util.Scanner;
 
          int numOfProblems = Integer.parseInt(scan.nextLine().trim());
 
-         for (int problems = 0; problems < numOfProblems-3; problems++) {
+         for (int problems = 0; problems < numOfProblems; problems++) {
 
              int arrLength = scan.nextInt();
              int t = Integer.parseInt(scan.nextLine().trim());
@@ -44,18 +48,29 @@ import java.util.Scanner;
              }
 
              PartInfo test1 = (IterApproach.FindOptimalScore(arr, t));
-             //int test2 = RecurseApproach.FindOptimalScore(arr, t);
-             
-             //System.out.println("Recursive test out: " + test2 + " problem " + problems);
-             System.out.println("Iterative test out: " + test1.ineq + " problem " + problems);
-             System.out.print(test1.psizes.size()+" ");
-             for (int x : test1.psizes) {
-                 System.out.print(x + " ");
-             }
-             System.out.println();
 
+             try {
+
+                 writer.write(test1.psizes.size() + " ");
+
+                 for (int x : test1.psizes) {
+                     writer.write(x + " ");
+                 }
+
+                 writer.write("\n");
+
+             } catch (Exception ex) {
+                 ex.printStackTrace();
+             }
          }
-         scan.close();
-         
+
+         try {
+             //cleaning up
+             writer.flush();
+             writer.close();
+             scan.close();
+         }catch (Exception ex){
+             ex.printStackTrace();
+         }
      }
  }
