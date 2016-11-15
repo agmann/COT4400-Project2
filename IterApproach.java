@@ -1,9 +1,10 @@
-import java.math.BigInteger;
-import java.util.*;
-
-/**
- * Created by jonat on 11/12/2016.
+/* Authors: Jack Burger, Austin Mann, Jonathan Valencia
+ *
+ * This class solves the variation of the Integer Partition problem using iterative dynamic programming
+ *
  */
+
+import java.util.*;
 
 public class IterApproach {
 
@@ -30,17 +31,22 @@ public class IterApproach {
             int numInPart = 0;
 
             for (int j = i; j < a.length; j++) {
+
                 //use this to compute the sum of the partition
                 tempSum += a[j];
 
 
                 if (tempSum <= t) {
+
                     numInPart++;
+
                     //store the ineq score plus the previous partition's scores
                     tempIneqScore = (t - tempSum) * (t - tempSum) + holdMin[i];
                     
                     if (tempIneqScore < holdMin[j+1]) {
+
                         holdMin[j+1] = tempIneqScore;
+
                         try {
                             partSizes.set(j, j - i + 1);
                         }catch (Exception ex){
